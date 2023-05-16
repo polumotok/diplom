@@ -29,7 +29,7 @@ class ProductAdmin(admin.ModelAdmin):
     # prepopulated_fields = {"href": ("title",)}
     fieldsets = [
         (None, {
-            "fields": ("title","description", "fullDescription", "price", "count", "href"),
+            "fields": ("title","description", "fullDescription", "price", "count", "href", "category"),
         }),
     ]
 

@@ -8,7 +8,7 @@ from app_products.views import \
     ProductLimitedView, \
     ProductSalesView, \
     ProductBannersView, \
-    ProductDetailView,basket
+    ProductDetailView,basket, ReviewView
 
 urlpatterns = [
     path('categories/', CategoryView.as_view(), name='category'),
@@ -18,7 +18,9 @@ urlpatterns = [
     path('products/limited/', ProductLimitedView.as_view(), name='limited'),
     path('sales/', ProductSalesView.as_view(), name='sales'),
     path('catalog/', CatalogView.as_view(), name='catalog'),
+    # path('catalog/<int:pk>/', CatalogView.as_view(), name='catalog'),
     path('basket/', basket.as_view(), name='backet'),
+    path('product/<int:pk>/review', ReviewView.as_view(), name='review'),
 
 
     ]

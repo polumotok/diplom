@@ -1,7 +1,11 @@
 from rest_framework import serializers
-from app_products.models import Category, Subcategory, Product, Cart, specifications
+from app_products.models import Category, Subcategory, Product, Cart, specifications, tags, Review
 
 
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
 class SubcategorySerializer(serializers.ModelSerializer):
     id = serializers.CharField(required=True)
     href = serializers.SerializerMethodField()
@@ -29,7 +33,7 @@ class SpecificationsSerializer(serializers.ModelSerializer):
 
 class TagsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = specifications
+        model = tags
         fields = ["name"]
 
 
@@ -40,12 +44,13 @@ class ProductSerializer(serializers.ModelSerializer):
     images = serializers.StringRelatedField(many=True)
     count = serializers.IntegerField()
     price = serializers.IntegerField()
-    tags = TagsSerializer(many=True, read_only=True)
+    tags = serializers.StringRelatedField(many=True)
     specifications = SpecificationsSerializer(many=True, read_only=True)
+    reviews = ReviewSerializer(many=True, read_only=True)
     class Meta:
         model = Product
         fields = ["id", "category", "price", "count", "title", "description",
-                  "fullDescription", "href", "images", "tags", "specifications"]
+                  "fullDescription", "href", "images", "tags", "specifications","reviews"]
 
     def get_category(self, obj):
         return (f'/catalog/{obj.category}')
@@ -66,4 +71,3 @@ class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = ['id', 'category', 'price', 'count', 'title', 'href', 'images']
-

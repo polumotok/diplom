@@ -74,3 +74,11 @@ class specifications(models.Model):
 class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product')
     count = models.DecimalField(default=1, max_digits=12, decimal_places=2, verbose_name=('count'))
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    author = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    text = models.TextField(max_length=500)
+    rate = models.DecimalField(default=5, max_digits=1, decimal_places=0)
+    date = models.DateTimeField(auto_now_add=True)
