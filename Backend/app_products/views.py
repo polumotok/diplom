@@ -44,25 +44,37 @@ class basket(APIView):
     return Response(serializer.data)
   def post(self, request):
     try:
-      product = Cart.objects.filter(product_id=request.data['id'])
+      product = Cart.objects.filter(
+        product_id=request.data['id']
+      )
+
       count = product[0].count
       count += int(request.data['count'])
       product.update(count=count)
     except :
-      product = Cart.objects.create(product_id=request.data['id'],
-                                    count=request.data['count'])
+      product = Cart.objects.create(
+        product_id=request.data['id'],
+        count=request.data['count']
+      )
+
     serializer = CartSerializer(data=product)
     serializer.is_valid()
     return Response(serializer.data)
 
   def delete(self,request):
     try:
-      product = Cart.objects.filter(product_id=request.query_params['id'])
+      product = Cart.objects.filter(
+        product_id=request.query_params['id']
+      )
+
       count = product[0].count
       count -= int(request.query_params['count'])
       product.update(count=count)
     except KeyError:
-      product = Cart.objects.filter(product_id=request.query_params['id'])
+      product = Cart.objects.filter(
+        product_id=request.query_params['id']
+      )
+
       product.delete()
     serializer = CartSerializer(data=product)
     serializer.is_valid()

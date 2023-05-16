@@ -17,9 +17,11 @@ class ProfileView(APIView):
     return Response(serializer.data)
   def post(self, request):
     product = Profile.objects.update(
-                                     email=request.data['email'],
-                                     fullName=request.data['fullName'],
-                                     phone=request.data['phone'],)
+      email=request.data['email'],
+      fullName=request.data['fullName'],
+      phone=request.data['phone'],
+    )
+
     serializer = ProfileSerializer(data=product)
     serializer.is_valid()
     return Response(serializer.data)
