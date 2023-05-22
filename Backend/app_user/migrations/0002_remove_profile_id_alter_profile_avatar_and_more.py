@@ -7,30 +7,36 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('app_user', '0001_initial'),
+        ("app_user", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='profile',
-            name='id',
+            model_name="profile",
+            name="id",
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='avatar',
-            field=models.ImageField(upload_to=app_user.models.product_user_directory_path),
+            model_name="profile",
+            name="avatar",
+            field=models.ImageField(
+                upload_to=app_user.models.product_user_directory_path
+            ),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='balance',
+            model_name="profile",
+            name="balance",
             field=models.FloatField(default=0),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='user',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL),
+            model_name="profile",
+            name="user",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                primary_key=True,
+                serialize=False,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

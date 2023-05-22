@@ -4,25 +4,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_orders', '0002_remove_orders_product_orders_address_orders_city_and_more'),
+        (
+            "app_orders",
+            "0002_remove_orders_product_orders_address_orders_city_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='orders',
-            name='address',
+            model_name="orders",
+            name="address",
             field=models.CharField(default=None, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='orders',
-            name='city',
+            model_name="orders",
+            name="city",
             field=models.CharField(default=None, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='orders',
-            name='totalCost',
-            field=models.DecimalField(decimal_places=2, default=0, max_digits=12, verbose_name='totalCost'),
+            model_name="orders",
+            name="totalCost",
+            field=models.DecimalField(
+                decimal_places=2, default=0, max_digits=12, verbose_name="totalCost"
+            ),
         ),
     ]

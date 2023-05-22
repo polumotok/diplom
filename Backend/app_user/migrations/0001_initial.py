@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,19 +15,40 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('fullName', models.CharField(max_length=100)),
-                ('email', models.EmailField(max_length=100)),
-                ('phone', models.CharField(max_length=50)),
-                ('avatar', models.ImageField(blank=True, null=True, upload_to=app_user.models.product_user_directory_path)),
-                ('balance', models.FloatField()),
-                ('status', models.TextField(blank=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("fullName", models.CharField(max_length=100)),
+                ("email", models.EmailField(max_length=100)),
+                ("phone", models.CharField(max_length=50)),
+                (
+                    "avatar",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to=app_user.models.product_user_directory_path,
+                    ),
+                ),
+                ("balance", models.FloatField()),
+                ("status", models.TextField(blank=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Profile',
+                "verbose_name": "Profile",
             },
         ),
     ]

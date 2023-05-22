@@ -5,22 +5,38 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_products', '0006_rename_tags_tags_name'),
+        ("app_products", "0006_rename_tags_tags_name"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author', models.CharField(max_length=100)),
-                ('email', models.EmailField(max_length=100)),
-                ('text', models.TextField(max_length=500)),
-                ('rate', models.DecimalField(decimal_places=0, default=5, max_digits=1)),
-                ('date', models.DateTimeField(auto_now_add=True)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_products.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("author", models.CharField(max_length=100)),
+                ("email", models.EmailField(max_length=100)),
+                ("text", models.TextField(max_length=500)),
+                (
+                    "rate",
+                    models.DecimalField(decimal_places=0, default=5, max_digits=1),
+                ),
+                ("date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_products.product",
+                    ),
+                ),
             ],
         ),
     ]

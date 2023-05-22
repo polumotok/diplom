@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_orders', '0003_alter_orders_address_alter_orders_city_and_more'),
+        ("app_orders", "0003_alter_orders_address_alter_orders_city_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='orders',
-            name='paymentType',
+            model_name="orders",
+            name="paymentType",
             field=models.CharField(max_length=50, null=True),
         ),
     ]
